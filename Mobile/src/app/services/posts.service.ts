@@ -17,4 +17,16 @@ export class PostsService {
 	getPost(id:number):Observable<any>{
 		return this.http.get(this.apiURL + 'posts/' + id);
 	}
+
+	deletePosts(id:number):Observable<any>{
+		return this.http.delete(this.apiURL + 'posts/' + id);
+	}
+
+	createPost(post:any):Observable<any> {
+		return this.http.post(this.apiURL + 'posts', post);
+	}
+
+	updatePost(id:number, post:any):Observable<any>{
+		return this.http.put(this.apiURL + 'posts/' + id, post);
+	}
 }

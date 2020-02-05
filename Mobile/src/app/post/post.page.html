@@ -24,6 +24,7 @@
   <div *ngIf='post !== null'>
     <img src="{{post?.image}}">
     <p>{{post?.description}}</p>
+    <ion-button (click)='editMode()'>Editar</ion-button>
   </div>
 
 </ion-content>

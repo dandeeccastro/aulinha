@@ -8,7 +8,7 @@ import { PostsService } from '../services/posts.service';
 })
 export class HomePage {
 
-	posts: any[]
+	posts: any[];
 	constructor(public posts_service: PostsService) {
 		this.getPosts();
 	}
@@ -21,7 +21,21 @@ export class HomePage {
 	}
 
 	deletePost(id:number){
-		console.log(id);
-		// Falta uma requisição aqui...
+		this.posts_service.deletePosts(id).subscribe((res) => {
+			console.log(res.data);
+			if(res.status === 200){
+				let id:number = res.data.id;
+				for (let post of this.posts){
+					if (post.id === id){
+						let i:number = this.posts.indexOf(post);
+						this.posts.splice(i,1);
+					}
+				}
+			} else if (res.status === 400){
+				alert('Deu ruim');
+			} else {
+				console.log('???')
+			}
+		});
 	}
 }

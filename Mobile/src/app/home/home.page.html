@@ -9,12 +9,14 @@
 <ion-content>
 
 	<ion-fab vertical="bottom" horizontal="end" activated="true" slot="fixed" >
-		<ion-fab-button href='/post/-1'>Plus</ion-fab-button>
+		<ion-fab-button href='/post/-1'><ion-icon name='add'></ion-icon></ion-fab-button>
 	</ion-fab>
 
-	<ion-card *ngFor='let post of posts' [href]="'/post/' + post.id">
-		<img src="{{post?.image}}" >
+	<ion-card *ngFor='let post of posts' >
+		<img src="{{post?.image}}"  >
 		<p>{{post?.description}}</p>
+		<a [href]="'/post/' + post.id">Ver post</a>
+		<ion-button color='danger' (click)='deletePost(post.id)'>X</ion-button>
 	</ion-card>
 
 </ion-content>
